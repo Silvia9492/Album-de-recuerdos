@@ -1,0 +1,142 @@
+@import url(https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap);
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Tangerine", cursive;
+  background-color: #F7F3F0;
+  color: #5E5954;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Tangerine", cursive;
+  font-weight: 700;
+  color: #5E5954;
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  font-size: 4rem;
+  color: #FAD4E4;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 2.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+.bg-principal {
+  background-color: #F7F3F0;
+}
+
+/*.bg-fondo {
+  background-color: $background;
+}*/
+.texto-oscuro {
+  color: #5E5954;
+}
+
+.texto-claro {
+  color: #F7F3F0;
+}
+
+.con-borde {
+  border: 2px solid #5E5954;
+  border-radius: 8px;
+}
+
+.con-borde-lg {
+  border: 2px solid #5E5954;
+  border-radius: 12px;
+}
+
+.padding-md {
+  padding: 1.5rem;
+}
+
+.padding-lg {
+  padding: 2rem;
+}
+
+.margin-md {
+  margin: 1.5rem;
+}
+
+.margin-lg {
+  margin: 2rem;
+}
+
+/*
+// ========================================
+// Componentes Base (ejemplos)
+// ========================================
+
+// Contenedor principal
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $espaciado-lg;
+}
+
+// Tarjeta (card) para fotos o recuerdos
+.tarjeta {
+  background-color: white;
+  border: $grosor-borde solid $color-bordes;
+  border-radius: $radio-borde-lg;
+  padding: $espaciado-lg;
+  margin-bottom: $espaciado-md;
+  box-shadow: 0 2px 8px rgba(94, 89, 84, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(94, 89, 84, 0.15);
+  }
+}
+
+// Botón
+.boton {
+  font-family: $fuente-principal;
+  font-size: $texto-normal;
+  background-color: $color-principal;
+  color: $color-texto-oscuro;
+  border: $grosor-borde solid $color-bordes;
+  border-radius: $radio-borde;
+  padding: $espaciado-sm $espaciado-lg;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: darken($color-principal, 5%);
+    transform: scale(1.02);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// ========================================
+// Nota: Para usar en Angular
+// ========================================
+// 1. Renombra este archivo a styles.scss
+// 2. En angular.json, asegúrate de que apunte a este archivo:
+//    "styles": ["src/styles.scss"]
+// 3. Para componentes específicos, puedes crear archivos .scss
+//    y usar las variables importándolas:
+//    @import 'styles.scss';
+*/
