@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+
+//PALETA DE COLORES
+$primary: #FAD4E4;
+$secondary: #BAA499;
+$border-color: #5E5954;
+$warning: #C2044E;
+$background: #F7F3F0;
+
+//Colores complementarios
+$dark-text: #5E5954;
+$light-text: #F7F3F0;
+
+
+//TIPOGRAFÍA
+$primary-font: 'Tangerine', cursive;
+$secondary-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+//Tamaños de fuente
+$principal-title: 4rem;      //Equivalencia = 64px
+$secondary-title: 3rem;      //Equivalencia = 48px
+$subtitle: 2.5rem;           //Equivalencia = 40px
+$text: 1.5rem;               //Equivalencia = 24px
+$small-text: 1.25rem;        //Equivalencia = 20px
+
+//Espaciado
+$space-xs: 0.5rem;
+$space-sm: 1rem;
+$space-md: 1.5rem;
+$space-lg: 2rem;
+$space-xl: 3rem;
+
+//Bordes
+$border-radius: 8px;
+$lg-border-radius: 12px;
+$border-thick: 2px;
+
+
+//ESTILOS GLOBALES PARA EL SITIO WEB
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $primary-font;
+  background-color: $background;
+  color: $dark-text;    //por defecto, se considera que la pantalla está en light-mode
+  font-size: $text;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $primary-font;
+  font-weight: 700;
+  color: $dark-text;
+  margin-bottom: $space-md;
+}
+
+h1 {
+  font-size: $principal-title;
+  color: $primary;
+}
+
+h2 {
+  font-size: $secondary-title;
+}
+
+h3 {
+  font-size: $subtitle;
+}
+
+p {
+  margin-bottom: $space-sm;
+}
+
+
+//UTILITY CLASSES
+//Colores de fondo
+.bg-principal {
+  background-color: $background;
+}
+
+/*.bg-fondo {
+  background-color: $background;
+}*/
+
+//Colores de texto
+.texto-oscuro {
+  color: $dark-text;
+}
+
+.texto-claro {
+  color: $light-text;
+}
+
+//Bordes
+.con-borde {
+  border: $border-thick solid $border-color;
+  border-radius: $border-radius;
+}
+
+.con-borde-lg {
+  border: $border-thick solid $border-color;
+  border-radius: $lg-border-radius;
+}
+
+//Espaciado
+.padding-md {
+  padding: $space-md;
+}
+
+.padding-lg {
+  padding: $space-lg;
+}
+
+.margin-md {
+  margin: $space-md;
+}
+
+.margin-lg {
+  margin: $space-lg;
+}
+
+/*
+// ========================================
+// Componentes Base (ejemplos)
+// ========================================
+
+// Contenedor principal
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $espaciado-lg;
+}
+
+// Tarjeta (card) para fotos o recuerdos
+.tarjeta {
+  background-color: white;
+  border: $grosor-borde solid $color-bordes;
+  border-radius: $radio-borde-lg;
+  padding: $espaciado-lg;
+  margin-bottom: $espaciado-md;
+  box-shadow: 0 2px 8px rgba(94, 89, 84, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(94, 89, 84, 0.15);
+  }
+}
+
+// Botón
+.boton {
+  font-family: $fuente-principal;
+  font-size: $texto-normal;
+  background-color: $color-principal;
+  color: $color-texto-oscuro;
+  border: $grosor-borde solid $color-bordes;
+  border-radius: $radio-borde;
+  padding: $espaciado-sm $espaciado-lg;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: darken($color-principal, 5%);
+    transform: scale(1.02);
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// ========================================
+// Nota: Para usar en Angular
+// ========================================
+// 1. Renombra este archivo a styles.scss
+// 2. En angular.json, asegúrate de que apunte a este archivo:
+//    "styles": ["src/styles.scss"]
+// 3. Para componentes específicos, puedes crear archivos .scss
+//    y usar las variables importándolas:
+//    @import 'styles.scss';
+*/
