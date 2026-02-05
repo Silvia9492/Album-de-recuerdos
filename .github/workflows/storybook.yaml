@@ -21,6 +21,8 @@ jobs:
         run: npm ci
       - name: Build Storybook
         run: npm run build-storybook
+      - name: Add .nojekyll file
+        run: touch ./storybook-static/.nojekyll
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
