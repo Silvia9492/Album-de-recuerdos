@@ -1,89 +1,100 @@
 <!-- Página inicial de bienvenida -->
 <div class="initial-form-container">
-    <div class="initial-page" *ngIf="!showForm && !isCompleted" @slideIn>
-        <h1>Aquí comienza tu viaje...</h1>
-        <button mat-raised-button class="init-button" (click)="startRegister()">
-            Empezar
-        </button>
+  @if (!showForm && !isCompleted) {
+    <div class="initial-page" @slideIn>
+      <h1>Aquí comienza tu viaje...</h1>
+      <button mat-raised-button class="init-button" (click)="startRegister()">
+        Empezar
+      </button>
     </div>
-    <!-- Pasos del formulario -->
-    <div *ngIf="showForm && !isCompleted" class="form-steps">
-        <form [formGroup]="registerForm">
-            <div class="step-container">
-                <!-- Mostrar solo la pregunta del paso actual -->
-                <h2 class="question-label">
-                    {{currentStepData.label}}
-                </h2>
-                
-                <!-- Crear todos los inputs pero mostrar solo el actual -->
-                <div *ngFor="let step of steps; let i = index">
-                    <mat-form-field 
-                        appearance="outline" 
-                        class="full-width"
-                        [style.display]="currentStep === i ? 'block' : 'none'">
-                        <input
-                        matInput
-                        [type]="step.type"
-                        [placeholder]="step.placeholder"
-                        [formControlName]="step.key"
-                        (input)="onInputChange($event)"
-                        (keypress)="onKeyPress($event)"
-                        [attr.data-step]="i"
-                        />
-                        <mat-error *ngIf="currentControl?.invalid && currentControl?.touched">
-                            {{getErrorMessage()}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-                <!-- Instrucciones de navegación -->
-                <div class="navigation">
-                    <p class="hint-text">
-                        <mat-icon class="hint-icon">keyboard_return</mat-icon>
-                        Presiona Enter para continuar
-                    </p>
-                </div>
+  }
+  <!-- Pasos del formulario -->
+  @if (showForm && !isCompleted) {
+    <div class="form-steps">
+      <form [formGroup]="registerForm">
+        <div class="step-container">
+          <!-- Mostrar solo la pregunta del paso actual -->
+          <h2 class="question-label">
+            {{currentStepData.label}}
+          </h2>
+          <!-- Crear todos los inputs pero mostrar solo el actual -->
+          @for (step of steps; track step; let i = $index) {
+            <div>
+              <mat-form-field
+                appearance="outline"
+                class="full-width"
+                [style.display]="currentStep === i ? 'block' : 'none'">
+                <input
+                  matInput
+                  [type]="step.type"
+                  [placeholder]="step.placeholder"
+                  [formControlName]="step.key"
+                  (input)="onInputChange($event)"
+                  (keypress)="onKeyPress($event)"
+                  [attr.data-step]="i"
+                  />
+                  @if (currentControl?.invalid && currentControl?.touched) {
+                    <mat-error>
+                      {{getErrorMessage()}}
+                    </mat-error>
+                  }
+                </mat-form-field>
+              </div>
+            }
+            <!-- Instrucciones de navegación -->
+            <div class="navigation">
+              <p class="hint-text">
+                <mat-icon class="hint-icon">keyboard_return</mat-icon>
+                Presiona Enter para continuar
+              </p>
             </div>
+          </div>
         </form>
         <!-- Botones de navegación -->
         <div class="navigation-buttons">
+          @if (currentStep > 0) {
             <button
-            mat-icon-button
-            class="previous-button"
-            *ngIf="currentStep > 0"
-            (click)="previousStep()"
-            >
-                <mat-icon>arrow_back</mat-icon>
+              mat-icon-button
+              class="previous-button"
+              (click)="previousStep()"
+              >
+              <mat-icon>arrow_back</mat-icon>
             </button>
-            <button
+          }
+          <button
             mat-fab
             class="next-button"
             [disabled]="!canAdvance"
             (click)="nextStep()"
             >
-                <mat-icon>
-                    {{currentStep < steps.length -1 ? 'arrow_forward' : 'check' }}
-                </mat-icon>
-            </button>
+            <mat-icon>
+              {{currentStep < steps.length -1 ? 'arrow_forward' : 'check' }}
+            </mat-icon>
+          </button>
         </div>
         <!-- Indicador de pasos -->
         <div class="step-indicator">
-            <span class="step-count">
-                {{ currentStep + 1 }} / {{ steps.length }}
-            </span>
-        </div> 
-    </div>
+          <span class="step-count">
+            {{ currentStep + 1 }} / {{ steps.length }}
+          </span>
+        </div>
+      </div>
+    }
     <!-- Barra de progreso del formulario -->
-    <div class="progress-bar" *ngIf="showForm && !isCompleted">
+    @if (showForm && !isCompleted) {
+      <div class="progress-bar">
         <div class="progress-fill" [style.width.%]="progress"></div>
-    </div>
+      </div>
+    }
     <!-- Pantalla después de formulario completado con éxito -->
-    <div *ngIf="isCompleted" class="form-complete-screen" @slideIn>
+    @if (isCompleted) {
+      <div class="form-complete-screen" @slideIn>
         <mat-icon class="success-icon">check_circle</mat-icon>
         <h2>¡Todo listo!</h2>
         <p>Grandes momentos te esperan aquí...</p>
         <button mat-raised-button class="start-button">
-            Crear mi álbum
+          Crear mi álbum
         </button>
-    </div>
-</div>
+      </div>
+    }
+  </div>
