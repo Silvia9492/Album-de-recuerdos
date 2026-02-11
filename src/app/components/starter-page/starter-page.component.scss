@@ -1,0 +1,312 @@
+@import "../../../styles.scss";
+
+.initial-form-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+    padding: $space-lg;
+    position: relative;
+    overflow: hidden;
+
+    //Animación de círculos
+    &::before, &::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.1;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    &::before {
+        width: 300px;
+        height: 300px;
+        background: $background;
+        top: -100px;
+        left: -100px;
+    }
+
+    &::after {
+        width: 400px;
+        height: 400px;
+        background: $background;
+        bottom: -150px;
+        right: -150px;
+        animation-delay: 3s;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+       transform: translateY(-20px) rotate(5deg); 
+    }
+}
+
+.progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 10;
+
+    .progress-fill {
+        height: 100%;
+        background: $secondary;
+        transition: width 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
+}
+
+.initial-page{
+    background: $background;
+    text-align: center;
+    border-radius: $lg-border-radius;
+    padding: $space-xl $space-lg;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+
+    .init-button {
+        font-family: $secondary-font;
+        font-size: $small-text;
+        padding: $space-sm $space-xl;
+        color: $primary;
+    }
+}
+
+.form-steps {
+    width: 100%;
+    max-width: 640px;
+    position: relative;
+    z-index: 1;
+
+    form {
+        width: 100%;
+    }
+}
+
+.step-container {
+    background: $background;
+    border-radius: $lg-border-radius;
+    padding: $space-xl $space-lg;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.question-label {
+    font-family: $primary-font;
+    font-size: $subtitle;
+    font-weight: 700;
+    color: $dark-text;
+    margin: 0 0 $space-lg 0;
+    text-align: center;
+    line-height: 1.3;
+    transition: opacity 0.3s ease;
+}
+
+.full-width {
+    width: 100%;
+    transition: opacity 0.3s ease;
+
+    ::ng-deep {
+        input {
+            font-family: $secondary-font;
+            font-size: $small-text;
+            padding: $space-sm;
+            text-align: center;
+            color: $dark-text;
+        }
+
+        // Bordes normales
+        .mat-mdc-text-field-wrapper {
+            .mdc-notched-outline__leading,
+            .mdc-notched-outline__notch,
+            .mdc-notched-outline__trailing {
+                border-color: $border-color !important;
+            }
+        }
+
+        // Borde cuando está enfocado
+        .mat-mdc-text-field-wrapper.mdc-text-field--focused {
+            .mdc-notched-outline__leading,
+            .mdc-notched-outline__notch,
+            .mdc-notched-outline__trailing {
+                border-color: $primary !important;
+            }
+        }
+
+        // Borde cuando hay error
+        .mat-form-field-invalid {
+            .mdc-notched-outline__leading,
+            .mdc-notched-outline__notch,
+            .mdc-notched-outline__trailing {
+                border-color: $warning !important;
+            }
+        }
+
+        // Mensaje de error
+        .mat-mdc-form-field-error {
+            font-family: $secondary-font;
+            text-align: center;
+            font-size: 0.875rem;
+            color: $warning;
+        }
+
+        // Placeholder
+        .mat-mdc-input-element::placeholder {
+            font-family: $secondary-font;
+            color: rgba($dark-text, 0.5);
+        }
+    }
+}
+
+.navigation {
+    margin-top: $space-md;
+    text-align: center;
+    opacity: 0.6;
+
+    .hint-text {
+        display: inline-flex;
+        align-items: center;
+        gap: $space-xs;
+        font-family: $secondary-font;
+        font-size: 0.75rem !important; // Forzar tamaño pequeño
+        color: $dark-text;
+        margin: 0;
+
+        .hint-icon {
+            font-size: 0.875rem;
+            width: 0.875rem;
+            height: 0.875rem;
+        }
+    }
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $space-sm;
+    margin-top: $space-lg;
+    position: relative;
+
+    .previous-button {
+        color: white;
+        transition: transform 0.2s ease;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    .next-button {
+        transition: all 0.3s ease;
+
+        &:not([disabled]):hover {
+            transform: scale(1.1);
+        }
+
+        &[disabled] {
+            opacity: 0.5;
+        }
+    }
+}
+
+.step-indicator {
+    text-align: center;
+    margin-top: $space-md;
+
+    .step-count {
+        color: white;
+        font-family: $secondary-font;
+        font-size: 0.875rem;
+        font-weight: 500;
+        opacity: 0.9;
+    }
+}
+
+.form-complete-screen {
+    background: $background;
+    border-radius: $lg-border-radius;
+    padding: $space-xl $space-lg;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+
+    .success-icon {
+        font-size: 4rem;
+        width: 4rem;
+        height: 4rem;
+        color: #34B181;
+        margin-bottom: $space-md;
+    }
+
+    h2 {
+        font-family: $primary-font;
+        font-size: $secondary-title;
+        color: $dark-text;
+        margin-bottom: $space-sm;
+    }
+
+    p {
+        font-family: $secondary-font;
+        font-size: $text;
+        color: $dark-text;
+        margin-bottom: $space-lg;
+    }
+
+    .start-button {
+        font-family: $secondary-font;
+        font-size: $small-text;
+        padding: $space-sm $space-lg;
+    }
+}
+
+//RESPONSIVIDAD
+@media (max-width: 600px) {
+    .initial-form-container{
+        padding: $space-sm;
+    }
+    
+    .initial-page {
+        padding: $space-lg $space-md;
+
+        h1 {
+            font-size: $secondary-title;
+        }
+    }
+
+    .form-steps {
+        max-width: 100%;
+    }
+
+    .step-container {
+        padding: $space-lg $space-md;
+        min-height: 280px;
+    }
+
+    .question-label {
+        font-size: $text;
+    }
+
+    .form-complete-screen {
+        padding: $space-lg $space-md;
+
+        h2 {
+            font-size: $subtitle;
+        }
+    }
+}

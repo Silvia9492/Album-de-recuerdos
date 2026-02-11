@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
 
 //PALETA DE COLORES
-$primary: #FAD4E4;
+$primary: #f38db8;
 $secondary: #BAA499;
 $border-color: #5E5954;
 $warning: #C2044E;
@@ -184,3 +184,5 @@ p {
 //    y usar las variables importándolas:
 //    @import 'styles.scss';
 */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
