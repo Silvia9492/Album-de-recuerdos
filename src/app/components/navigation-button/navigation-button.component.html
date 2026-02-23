@@ -1,0 +1,31 @@
+<div class="navigation-container">
+    <!-- Botones de navegación -->
+    <div class="navigation-buttons">
+        <button
+            mat-icon-button
+            class="previous-button"
+            *ngIf="showPreviousButton"
+            (click)="onPreviousClick()"
+        >
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        
+        <button
+            mat-fab
+            class="next-button"
+            [disabled]="!canAdvance()"
+            (click)="onNextClick()"
+        >
+            <mat-icon>
+                {{ isLastStep ? 'check' : 'arrow_forward' }}
+            </mat-icon>
+        </button>
+    </div>
+
+    <!-- Indicador de pasos -->
+    <div class="step-indicator">
+        <span class="step-count">
+            {{ currentStep() + 1 }} / {{ totalSteps() }}
+        </span>
+    </div>
+</div>

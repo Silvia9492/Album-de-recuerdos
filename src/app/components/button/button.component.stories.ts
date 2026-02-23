@@ -1,92 +1,80 @@
-import { Meta, StoryObj, moduleMetadata } from '@storybook/angular'
-import { ButtonComponent } from './button.component'
-import { CommonModule } from '@angular/common'
+import type { Meta, StoryObj } from '@storybook/angular';
+import { ButtonComponent } from './button.component';
 
 const meta: Meta<ButtonComponent> = {
-    title: 'Components/Button',
-    component: ButtonComponent,
-    decorators: [
-        moduleMetadata({
-            imports: [CommonModule],
-        }),
-    ],
-    tags: ['autodocs'],
-    argTypes: {
-        variant: {
-            control: 'select',
-            options: ['primary', 'secondary', 'outline'],
-        },
-        size: {
-            control: 'select',
-            options: ['small', 'medium', 'large'],
-        },
-        disabled: {
-            control: 'boolean',
-        },
-        clicked: {action: 'clicked'},
+  title: 'Components/Button',
+  component: ButtonComponent,
+  tags: ['autodocs'],
+  argTypes: {
+    variant: {
+      control: { type: 'select' },
+      options: ['primary', 'secondary', 'outline'],
     },
+    size: {
+      control: { type: 'select' },
+      options: ['small', 'medium', 'large'],
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
+    clicked: { action: 'clicked' },
+  },
 };
 
 export default meta;
 
 type Story = StoryObj<ButtonComponent>;
 
-//HISTORIA DEL BOTÓN PRIMARIO
 export const Primary: Story = {
-    args: {
-        label: 'Guardar recuerdo',
-        variant: 'primary',
-        size: 'medium',
-        disabled: false,
-    }
-}
+  args: {
+    label: 'Guardar recuerdo',
+    variant: 'primary',
+    size: 'medium',
+    disabled: false,
+  },
+};
 
-//HISTORIA DEL BOTÓN SECUNDARIO
 export const Secondary: Story = {
-    args: {
-        label: 'Cancelar',
-        variant: 'secondary',
-        size: 'medium',
-        disabled: false,
-    }
-}
+  args: {
+    label: 'Cancelar',
+    variant: 'secondary',
+    size: 'medium',
+    disabled: false,
+  },
+};
 
-//HISTORIA DEL BOTÓN OUTLINE
 export const Outline: Story = {
-    args: {
-        label: 'Saber más',
-        variant: 'outline',
-        size: 'medium',
-        disabled: false,
-    }
-}
+  args: {
+    label: 'Saber más',
+    variant: 'outline',
+    size: 'medium',
+    disabled: false,
+  },
+};
 
-//HISTORIA DEL BOTÓN PEQUEÑO
 export const Small: Story = {
-    args: {
-        label: 'Editar recuerdo',
-        variant: 'primary',
-        size: 'small',
-        disabled: false,
-    }
-}
+  args: {
+    label: 'Editar recuerdo',
+    variant: 'primary',
+    size: 'small',
+    disabled: false,
+  },
+};
 
-//HISTORIA DEL BOTÓN GRANDE
 export const Large: Story = {
-    args: {
-        label: 'Añadir recuerdo',
-        variant: 'primary',
-        size: 'large',
-        disabled: false,
-    }
-}
+  args: {
+    label: 'Añadir recuerdo',
+    variant: 'primary',
+    size: 'large',
+    disabled: false,
+  },
+};
 
-//HISTORIA DEL BOTÓN DESHABILITADO
 export const Disabled: Story = {
-    args: {
-        label: 'Deshabilitado',
-        variant: 'primary',
-        size: 'medium',
-        disabled: false,
-    }
-}
+  args: {
+    label: 'Deshabilitado',
+    variant: 'primary',
+    size: 'medium',
+    disabled: true,
+  },
+};

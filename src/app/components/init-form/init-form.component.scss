@@ -1,0 +1,142 @@
+@import "../../../styles.scss";
+
+.form-container {
+    width: 100%;
+    max-width: 640px;
+    position: relative;
+}
+
+.progress-bar {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+
+    .progress-fill {
+        height: 100%;
+        background: $secondary;
+        transition: width 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+        border-radius: 2px;
+    }
+}
+
+.step-container {
+    background: $background;
+    border-radius: $lg-border-radius;
+    padding: $space-xl $space-lg;
+    width: 600px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.question-label {
+    font-family: $primary-font;
+    font-size: $subtitle;
+    font-weight: 700;
+    color: $dark-text;
+    margin: 0 0 $space-lg 0;
+    text-align: center;
+    line-height: 1.3;
+    transition: opacity 0.3s ease;
+}
+
+.full-width {
+    width: 100%;
+    transition: opacity 0.3s ease;
+
+    ::ng-deep {
+        input {
+            font-family: $secondary-font;
+            font-size: $small-text;
+            padding: $space-sm;
+            text-align: center;
+            color: $dark-text;
+        }
+
+        // Bordes normales
+        .mat-mdc-text-field-wrapper {
+            .mdc-notched-outline__leading,
+            .mdc-notched-outline__notch,
+            .mdc-notched-outline__trailing {
+                border-color: $border-color !important;
+            }
+        }
+
+        // Borde cuando está enfocado
+        .mat-mdc-text-field-wrapper.mdc-text-field--focused {
+            .mdc-notched-outline__leading,
+            .mdc-notched-outline__notch,
+            .mdc-notched-outline__trailing {
+                border-color: $primary !important;
+            }
+        }
+
+        // Borde cuando hay error
+        .mat-form-field-invalid {
+            .mdc-notched-outline__leading,
+            .mdc-notched-outline__notch,
+            .mdc-notched-outline__trailing {
+                border-color: $warning !important;
+            }
+        }
+
+        // Mensaje de error
+        .mat-mdc-form-field-error {
+            font-family: $secondary-font;
+            text-align: center;
+            font-size: 0.875rem;
+            color: $warning;
+        }
+
+        // Placeholder
+        .mat-mdc-input-element::placeholder {
+            font-family: $secondary-font;
+            color: rgba($dark-text, 0.5);
+        }
+    }
+}
+
+.navigation {
+    margin-top: $space-md;
+    text-align: center;
+    opacity: 0.6;
+
+    .hint-text {
+        display: inline-flex;
+        align-items: center;
+        gap: $space-xs;
+        font-family: $secondary-font;
+        font-size: 0.75rem !important;
+        color: $dark-text;
+        margin: 0;
+
+        .hint-icon {
+            font-size: 0.875rem;
+            width: 0.875rem;
+            height: 0.875rem;
+        }
+    }
+}
+
+// Responsividad
+@media (max-width: 600px) {
+    .form-container {
+        max-width: 100%;
+    }
+
+    .step-container {
+        padding: $space-lg $space-md;
+        min-height: 280px;
+    }
+
+    .question-label {
+        font-size: $text;
+    }
+}

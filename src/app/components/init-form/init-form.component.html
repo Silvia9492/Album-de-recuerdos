@@ -1,0 +1,54 @@
+<div class="form-container">
+    <!-- Barra de progreso -->
+    <div class="progress-bar">
+        <div class="progress-fill" [style.width.%]="progress"></div>
+    </div>
+
+    <!-- Formulario -->
+    <form [formGroup]="registerForm">
+        <div class="step-container">
+            <!-- Pregunta del paso actual -->
+            <h2 class="question-label">
+                {{currentStepData.label}}
+            </h2>
+            
+            <!-- Crear todos los inputs pero mostrar solo el actual -->
+            <div *ngFor="let step of steps; let i = index">
+                <mat-form-field 
+                    appearance="outline" 
+                    class="full-width"
+                    [style.display]="currentStep === i ? 'block' : 'none'">
+                    <input
+                    matInput
+                    [type]="step.type"
+                    [placeholder]="step.placeholder"
+                    [formControlName]="step.key"
+                    (input)="onInputChange($event)"
+                    (keypress)="onKeyPress($event)"
+                    [attr.data-step]="i"
+                    />
+                    <mat-error *ngIf="currentControl?.invalid && currentControl?.touched">
+                        {{getErrorMessage()}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <!-- Instrucciones de navegación -->
+            <div class="navigation">
+                <p class="hint-text">
+                    <mat-icon class="hint-icon">keyboard_return</mat-icon>
+                    Presiona Enter para continuar
+                </p>
+            </div>
+        </div>
+    </form>
+
+    <!-- Componente de navegación -->
+    <app-navigation-button
+        [currentStep]="currentStep"
+        [totalSteps]="steps.length"
+        [canAdvance]="canAdvance"
+        (previous)="onPrevious()"
+        (next)="onNext()"
+    ></app-navigation-button>
+</div>
