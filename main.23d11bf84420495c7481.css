@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 4rem;
-  color: #FAD4E4;
+  color: #f38db8;
 }
 
 h2 {
@@ -140,3 +140,11 @@ p {
 //    y usar las variables importándolas:
 //    @import 'styles.scss';
 */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
