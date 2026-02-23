@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { NavigationButtonComponent } from '../navigation-button/navigation-button.component';
+import { ProgressBarComponent } from '../progress-bar/progress-bar.component';
 
 interface FormStep {
   key: string;
@@ -32,7 +33,8 @@ export interface RegistrationData {
     MatFormFieldModule,
     MatButtonModule,
     MatIconModule,
-    NavigationButtonComponent
+    NavigationButtonComponent,
+    ProgressBarComponent
   ],
   templateUrl: './init-form.component.html',
   styleUrl: './init-form.component.scss'
@@ -93,10 +95,6 @@ export class InitFormComponent {
 
   get canAdvance(): boolean {
     return this.currentControl?.valid || false;
-  }
-
-  get progress(): number {
-    return ((this.currentStep + 1) / this.steps.length) * 100;
   }
 
   onInputChange(event: any): void {

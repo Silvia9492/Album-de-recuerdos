@@ -1,9 +1,8 @@
 <div class="form-container">
-    <!-- Barra de progreso -->
-    <div class="progress-bar">
-        <div class="progress-fill" [style.width.%]="progress"></div>
-    </div>
-
+    <app-progress-bar
+    [currentStep]="currentStep"
+    [totalSteps]="steps.length"
+    ></app-progress-bar>
     <!-- Formulario -->
     <form [formGroup]="registerForm">
         <div class="step-container">
